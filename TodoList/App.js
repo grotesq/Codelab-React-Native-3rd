@@ -25,6 +25,17 @@ const CustomButton = styled.TouchableOpacity`
 <TodoItem/>
 */
 
+// 구조 분해 할당, Destructure Assignment
+const Item = ( { item, remove } ) => {
+  return (
+    <TodoItem>
+      <Text>{ item.content }</Text>
+      <Button color={'#f00'} title="삭제" onPress={ () => remove( item.id ) }/>
+    </TodoItem>
+  );
+}
+// <Item key={ item.id } item={ item } remove={ remove }/>
+
 export default function App() {
   const [ content, setContent ] = useState( '' );
   const [ list, setList ] = useState( [] );
@@ -59,10 +70,7 @@ export default function App() {
           <Button title="추가" onPress={ () => addItem() }/>
         </View>
         { list.map( item => (
-          <TodoItem key={ item.id }>
-            <Text>{ item.content }</Text>
-            <Button color={'#f00'} title="삭제" onPress={ () => remove( item.id ) }/>
-          </TodoItem>
+          <Item key={ item.id } item={ item } remove={ remove }/>
         ) ) }
       </ScrollView>
     </SafeAreaView>
