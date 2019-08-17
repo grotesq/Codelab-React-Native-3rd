@@ -3,6 +3,7 @@ import { Platform, Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput
 import _ from 'underscore';
 import styled from 'styled-components/native';
 import Constants from 'expo-constants';
+import Item from './components/Item';
 
 const Row = styled.View`
   flex-direction: row;
@@ -12,11 +13,7 @@ const Input = styled.TextInput`
   border-color: #000;
   border-bottom-width: 1;
 `
-const TodoItem = styled.View`
-  flex-direction: row;
-  width: 350;
-  justify-content: space-between;
-`
+
 const CustomButton = styled.TouchableOpacity`
   
 `
@@ -24,17 +21,6 @@ const CustomButton = styled.TouchableOpacity`
 <View style={{ flexDirection: 'row', width: 350, ... }}/>
 <TodoItem/>
 */
-
-// 구조 분해 할당, Destructure Assignment
-const Item = ( { item, remove } ) => {
-  return (
-    <TodoItem>
-      <Text>{ item.content }</Text>
-      <Button color={'#f00'} title="삭제" onPress={ () => remove( item.id ) }/>
-    </TodoItem>
-  );
-}
-// <Item key={ item.id } item={ item } remove={ remove }/>
 
 export default function App() {
   const [ content, setContent ] = useState( '' );
