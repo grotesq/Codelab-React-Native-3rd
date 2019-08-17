@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Platform, Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import _ from 'underscore';
 import styled from 'styled-components/native';
+import Constants from 'expo-constants';
 
 const Row = styled.View`
   flex-direction: row;
@@ -44,8 +45,12 @@ export default function App() {
   //   borderColor: "#000",
   //   borderBottomWidth: 1,
   // }
+  let marginTop = 0;
+  if( Platform.OS === 'android' ) {
+    marginTop = Constants.statusBarHeight;
+  }
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {marginTop}]}>
       <ScrollView>
         <View style={ [ styles.row, { marginBottom: 12 } ] }>
           <Input value={ content }
