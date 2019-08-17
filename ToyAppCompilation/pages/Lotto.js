@@ -5,7 +5,7 @@ import _ from 'underscore';
 const numbers = [];
 _.times( 45, n => numbers.push( n + 1 ) ); // 1~45
 
-export default function App() {
+export default function App({navigation}) {
   const shuffled = _.shuffle( numbers );
   shuffled.length = 6;
   const [ result, setResult ] = useState( shuffled );
@@ -18,6 +18,7 @@ export default function App() {
     <View>
       <Text>{ result.join( ', ' ) }</Text>
       <Button title="다시 생성" onPress={ onPressHandler }/>
+      <Button title="뒤로" onPress={ () => navigation.goBack() }/>
     </View>
   );
 }

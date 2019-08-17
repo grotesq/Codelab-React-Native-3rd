@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 
-export default () => {
+export default ({navigation}) => {
   const result = Math.random();
   return <View>
     { result < 0.5 ? (
@@ -9,5 +9,7 @@ export default () => {
     ) : (
       <Text>당신은 살아남았습니다.</Text>
     ) }
+
+    <Button title="뒤로" onPress={ () => navigation.goBack() }/>
   </View>
 }
