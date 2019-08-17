@@ -7,6 +7,7 @@ import { createAppContainer, createStackNavigator, createDrawerNavigator, create
 
 List.navigationOptions = {
   title: '토이 앱 합본팩',
+  // header: null,
 };
 Thanos.navigationOptions = {
   title: '타노스 스냅',
