@@ -11,7 +11,7 @@
 - 2강
   - [함수형 컴포넌트와 클래스 컴포넌트](_documentation/2강%20-%20함수형%20컴포넌트와%20클래스%20컴포넌트.md)
 - 3강
-  - [setState](_documentation/3\352\260\225%20-%20setState.md)
-  - [Immer](_documentation/3\352\260\225%20-%20Immer.md)
-  - [Promise](_documentation/3\352\260\225%20-%20Promise.md)
-  - [async await](_documentation/3\352\260\225%20-%20async%20await.md)
+  - [setState](_documentation/3강%20-%20setState.md)
+  - [Immer](_documentation/3강%20-%20Immer.md)
+  - [Promise](_documentation/3강%20-%20Promise.md)
+  - [async await](_documentation/3강%20-%20async%20await.md)
