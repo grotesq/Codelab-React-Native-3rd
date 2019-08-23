@@ -8,3 +8,5 @@
   - [JSX 내에서의 분기 처리](_documentation/1강%20-%20JSX%20내에서의%20분기%20처리.md)
   - [useState](_documentation/1강%20-%20useState.md)
   - [이벤트 처리](_documentation/1강%20-%20이벤트%20처리.md)
+- 2강
+  - [함수형 컴포넌트와 클래스 컴포넌트](_documentation/2강%20-%20함수형%20컴포넌트와%20클래스%20컴포넌트.md)
