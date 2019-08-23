@@ -1,6 +1,6 @@
 # Promise
 
-참조 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises
+참조 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises  
 참조 : https://mdn.io/promise
 
 콜백 형태의 비동기 처리를 개선하기 위해 ES6에 추가
