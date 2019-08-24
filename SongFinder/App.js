@@ -3,7 +3,7 @@ import { AppLoading } from 'expo';
 import { Container, Text, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Input } from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { AsyncStorage, View } from 'react-native';
 import axios from 'axios';
 
 export default class App extends React.Component {
@@ -16,9 +16,47 @@ export default class App extends React.Component {
     };
   }
 
-  loadDefault = async () => {
-    const response = await axios.get( 'https://api.manana.kr/karaoke.json' );
-    this.setState( { songs: response.data } );
+  /*
+    key - `https://api.manana.kr/karaoke.json`
+    value - {
+      timestamp: new Date().getTime(),
+      songs: [ ... ]
+    }
+
+    key - `https://api.manana.kr/karaoke/singer/${this.state.keyword}.json`
+    value - {
+      timestamp: ...,
+      songs: [ ... ]
+    }
+  */
+
+  getSongsFromStorage = async url => {
+    let data = await AsyncStorage.getItem( url );
+    if( !data ) {
+      return null;
+    }
+    data = JSON.parse( data );
+    if( data.timestamp < new Date().getTime() - 86400 ) {
+      return null;
+    }
+
+    return data;
+  }
+
+  load = async url => {
+    const songs = await this.getSongsFromStorage( url );
+    if( !songs ) {
+      const response = await axios.get( url );
+      this.setState( { songs: response.data } );
+      const data = {
+        timestamp: new Date().getTime(),
+        songs: response.data,
+      }
+      await AsyncStorage.setItem( url, JSON.stringify( data ) );
+    }
+    else {
+      this.setState( { songs: songs.songs } );
+    }
   }
 
   search = async () => {
@@ -27,8 +65,7 @@ export default class App extends React.Component {
       return;
     }
     const url = `https://api.manana.kr/karaoke/singer/${this.state.keyword}.json`;
-    const response = await axios.get( url );
-    this.setState( { songs: response.data } );
+    this.load( url );
   }
 
   async componentDidMount() {
@@ -37,7 +74,7 @@ export default class App extends React.Component {
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       ...Ionicons.font,
     });
-    this.loadDefault();
+    this.load( 'https://api.manana.kr/karaoke.json' );
     this.setState({ isReady: true });
   }
 
