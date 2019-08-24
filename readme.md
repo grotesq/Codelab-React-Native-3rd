@@ -1,5 +1,6 @@
 # 양재동 코드랩 리액트 네이티브 (3rd)
-
+- 공통사항
+  - [Expo 기본 NativeBase App.js 구조](_documentation/Expo%20기본%20NativaBase%20App.js%20구조)
 - 1강
   - [개발 환경 구성](_documentation/1강%20-%20개발%20환경%20구성.md)
   - [화살표 함수](_documentation/1강%20-%20화살표%20함수.md)
