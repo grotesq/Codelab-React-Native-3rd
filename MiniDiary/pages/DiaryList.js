@@ -17,13 +17,13 @@ class DiaryList extends React.Component {
                     </Button>
                 </Left>
                 <Body>
-                    <Title>Header</Title>
+                    <Title>일기 목록</Title>
                 </Body>
                 <Right />
                 </Header>
                 <Content>
                     { this.state.list.map( item => (
-                        <Button key={ item.id } onPress={ () => this.props.navigation.navigate( 'DiaryView', { item } )}>
+                        <Button key={ item.id } dark transparent onPress={ () => this.props.navigation.navigate( 'DiaryView', { item } )}>
                             <Text>[{ item.date }] { item.subject }</Text>
                         </Button>
                     ))}

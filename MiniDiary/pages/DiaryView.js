@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { Form, Item, Label, Container, Text, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 
 export default ({navigation}) => {
@@ -8,7 +9,7 @@ export default ({navigation}) => {
         <Header>
           <Left>
             <Button transparent onPress={ () => navigation.goBack() }>
-              <Icon name='menu' />
+              <Icon name='ios-arrow-back' />
             </Button>
           </Left>
           <Body>
@@ -17,25 +18,16 @@ export default ({navigation}) => {
           <Right />
         </Header>
         <Content>
-            <Form>
-                <Item fixedLabel>
-                    <Label>제목</Label>
-                    <Text>{ item.subject }</Text>
-                </Item>
-                <Item fixedLabel last>
-                    <Label>날짜</Label>
-                    <Text>{ item.date }</Text>
-                </Item>
+            <View style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: '#e5e5e5'}}>
+                <Text>{ item.subject }</Text>
+            </View>
+            <View style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: '#e5e5e5'}}>
+                <Text>{ item.date }</Text>
+            </View>
+            <View style={{ padding: 16 }}>
                 <Text>{ item.content }</Text>
-            </Form>            
+            </View>           
         </Content>
-        <Footer>
-          <FooterTab>
-            <Button full>
-              <Text>Footer</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
       </Container>
     )
 };

@@ -50,7 +50,7 @@ export default ({ navigation }) => {
         <Header>
           <Left>
             <Button transparent onPress={ () => navigation.goBack() }>
-              <Icon name='menu' />
+              <Icon name='ios-arrow-back' />
             </Button>
           </Left>
           <Body>
