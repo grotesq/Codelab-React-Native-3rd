@@ -1,4 +1,11 @@
-다음 내용을 복사해서 사용하십시오.
+설치
+
+```bash
+yarn add native-base
+expo install expo-font
+```
+
+App.js에 다음 내용을 복사해서 사용하십시오.
 
 ```javascript
 import React from 'react';
