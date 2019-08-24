@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Text, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
+import { Form, Item, Label, Container, Text, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon } from 'native-base';
 
-export default ({navigation}) => (
-    <Container>
+export default ({navigation}) => {
+    const item = navigation.getParam( 'item' );
+    return (
+        <Container>
         <Header>
           <Left>
             <Button transparent onPress={ () => navigation.goBack() }>
@@ -10,12 +12,22 @@ export default ({navigation}) => (
             </Button>
           </Left>
           <Body>
-            <Title>Header</Title>
+            <Title>{ item.subject }</Title>
           </Body>
           <Right />
         </Header>
         <Content>
-            <Text>View</Text>
+            <Form>
+                <Item fixedLabel>
+                    <Label>제목</Label>
+                    <Text>{ item.subject }</Text>
+                </Item>
+                <Item fixedLabel last>
+                    <Label>날짜</Label>
+                    <Text>{ item.date }</Text>
+                </Item>
+                <Text>{ item.content }</Text>
+            </Form>            
         </Content>
         <Footer>
           <FooterTab>
@@ -25,4 +37,5 @@ export default ({navigation}) => (
           </FooterTab>
         </Footer>
       </Container>
-);
+    )
+};
