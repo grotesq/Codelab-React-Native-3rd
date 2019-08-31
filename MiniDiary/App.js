@@ -7,6 +7,8 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 import DiaryList from './pages/DiaryList';
 import DiaryView from './pages/DiaryView';
 import DiaryForm from './pages/DiaryForm';
+import Settings from './pages/Settings';
+import { AppProvider } from './contexts/AppContext';
 
 DiaryList.navigationOptions = {
   header: null,
@@ -17,11 +19,15 @@ DiaryView.navigationOptions = {
 DiaryForm.navigationOptions = {
   header: null,
 }
+Settings.navigationOptions = {
+  header: null,
+}
 
 const Navigator = createStackNavigator({
   DiaryList,
   DiaryView,
   DiaryForm,
+  Settings,
 });
 
 const AppContainer = createAppContainer( Navigator );
@@ -49,9 +55,11 @@ export default class App extends React.Component {
     }
 
     return (
-      <AppContainer>
+      <AppProvider>
+        <AppContainer>
 
-      </AppContainer>
+        </AppContainer>
+      </AppProvider>
     );
   }
 }
