@@ -70,6 +70,7 @@ class AppProvider extends Component {
   }
 }
 
+// High Order Component 형식으로 withAppContext를 만들어 사용한다.
 const withAppContext = TargetComponent => {
   const WithAppContextComponent = props => (
     <AppConsumer>
