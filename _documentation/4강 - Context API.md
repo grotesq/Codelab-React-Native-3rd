@@ -104,13 +104,23 @@ class App extends React.Component {
 import { withAppContext } from '../contexts/AppContext';
 
 class ClassComponent extends React.Component {
-  ...
+  render() {
+    return (
+      <>
+        { this.props.context.value }
+      </>
+    );
+  }
 }
 
 ClassComponent = withAppContext( ClassComponent );
 
-function FunctionalComponent() {
-  ...
+function FunctionalComponent( { context } ) {
+  return (
+    <>
+      { context.value }
+    </>
+  );
 }
 
 FunctionalComponent = withAppContext( FunctionalComponent );
