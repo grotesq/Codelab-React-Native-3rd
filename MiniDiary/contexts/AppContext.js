@@ -8,7 +8,7 @@ class AppProvider extends Component {
     super(props);
 
     this.state = {
-      fontSize: 16,
+      fontSize: props.fontSize,
       update: (state, callback) => {
         this.setState(state, callback);
       },

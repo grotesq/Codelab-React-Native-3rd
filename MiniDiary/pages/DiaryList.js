@@ -38,7 +38,7 @@ class DiaryList extends React.Component {
                 <Footer>
                 <FooterTab>
                     <Button full onPress={ () => this.props.navigation.navigate( 'DiaryForm' )}>
-                    <Text style={{ fontSize: this.props.context.fontSize }}>새 글 작성</Text>
+                    <Text>새 글 작성</Text>
                     </Button>
                 </FooterTab>
                 </Footer>

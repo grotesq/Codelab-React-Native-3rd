@@ -9,6 +9,7 @@ import DiaryView from './pages/DiaryView';
 import DiaryForm from './pages/DiaryForm';
 import Settings from './pages/Settings';
 import { AppProvider } from './contexts/AppContext';
+import { AsyncStorage } from 'react-native';
 
 DiaryList.navigationOptions = {
   header: null,
@@ -37,6 +38,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       isReady: false,
+      fontSize: 16,
     };
   }
 
@@ -46,7 +48,14 @@ export default class App extends React.Component {
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       ...Ionicons.font,
     });
-    this.setState({ isReady: true });
+    let size = await AsyncStorage.getItem( 'Settings.fontSize' );
+    if( size ) {
+      size = parseInt( size, 10 );
+    }
+    else {
+      size = 16;
+    }
+    this.setState({ isReady: true, fontSize: size });
   }
 
   render() {
@@ -55,7 +64,7 @@ export default class App extends React.Component {
     }
 
     return (
-      <AppProvider>
+      <AppProvider fontSize={ this.state.fontSize }>
         <AppContainer>
 
         </AppContainer>
